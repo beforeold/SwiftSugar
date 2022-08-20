@@ -6,6 +6,7 @@ final class SwiftSugarTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(SwiftSugar().text, "Hello, World!")
+        XCTAssertTrue(true.assertTrue())
+        XCTAssertTrue(false.assertFalse())
     }
 }
