@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Optional {
-  @inlinable func ifNonnull<U>(_ block: (Wrapped) throws -> U) rethrows -> U? {
+  @inlinable func ifSome<U>(_ block: (Wrapped) throws -> U) rethrows -> U? {
     if let unwapped = self {
       return try block(unwapped)
     }
