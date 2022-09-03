@@ -62,3 +62,13 @@ public extension Optional where Wrapped == Bool {
         }
     }
 }
+
+public extension Bool {
+    var isTrue: Bool {
+        return self
+    }
+    
+    var isFalse: Bool {
+        return !self
+    }
+}
