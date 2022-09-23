@@ -16,7 +16,7 @@ public class OnceFlag {
     private let queue: DispatchQueue?
     
     /// create an instance
-    /// - Parameter threadSafe: whether keep thread safe
+    /// - Parameter threadSafe: whether keep thread safe, default to be false.
     public init(threadSafe: Bool = false) {
         queue = threadSafe ? DispatchQueue(label: "com.budswift.onceflag.queue") : nil
     }
