@@ -20,4 +20,22 @@ final class SwiftSugarTests: XCTestCase {
             print("ok")
         })
     }
+    
+    func testOptional() {
+        do {
+            let o1: Double? = 9
+            let r1 = o1.ifNotNil(sqrt)
+            XCTAssertEqual(r1, 3)
+            XCTAssertFalse(o1.isNil)
+            XCTAssertTrue(o1.isNotNil)
+        }
+        
+        do {
+            let o1: Double? = nil
+            let r1 = o1.ifNotNil(sqrt)
+            XCTAssertEqual(r1, nil)
+            XCTAssertTrue(o1.isNil)
+            XCTAssertFalse(o1.isNotNil)
+        }
+    }
 }

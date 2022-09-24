@@ -8,12 +8,18 @@
 import Foundation
 
 public extension Optional {
-  @inlinable func ifSome<U>(_ block: (Wrapped) throws -> U) rethrows -> U? {
-    if let unwapped = self {
-      return try block(unwapped)
+    /// call the block if not nil
+    @inlinable func ifNotNil<U>(_ block: (Wrapped) throws -> U) rethrows -> U? {
+        return try flatMap(block)
     }
-    else {
-      return nil
+}
+
+public extension Optional {
+    var isNil: Bool {
+        return self == nil
     }
-  }
+    
+    var isNotNil: Bool {
+        return self != nil
+    }
 }
