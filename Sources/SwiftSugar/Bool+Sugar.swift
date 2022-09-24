@@ -2,7 +2,7 @@
 //  Bool+Sugar.swift
 //  
 //
-//  Created by Brook16 on 2022/8/20.
+//  Created by beforeold on 2022/8/20.
 //
 
 import Foundation

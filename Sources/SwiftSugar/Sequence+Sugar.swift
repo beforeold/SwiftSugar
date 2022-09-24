@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Sequence+Sugar.swift
 //  
 //
 //  Created by beforeold on 2022/9/23.
