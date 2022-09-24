@@ -7,15 +7,15 @@
 
 
 public extension Int {
-    func times(_ work: () -> Void) {
+    func times(_ work: () throws -> Void) rethrows {
         for _ in 0..<self {
-            work()
+            try work()
         }
     }
     
-    func enumerate(_ work: (Int) -> Void) {
+    func enumerate(_ work: (Int) throws -> Void) rethrows {
         for i in 0..<self {
-            work(i)
+            try work(i)
         }
     }
 }

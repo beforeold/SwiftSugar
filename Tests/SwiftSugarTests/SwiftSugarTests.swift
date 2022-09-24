@@ -11,7 +11,7 @@ final class SwiftSugarTests: XCTestCase {
     }
     
     func testOnceFlag() {
-        let onceFlag = OnceFlag()
+        let onceFlag = OnceSugar()
         XCTAssertTrue(onceFlag.onceOnly {
             print("ok")
         })

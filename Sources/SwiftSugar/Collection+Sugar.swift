@@ -11,8 +11,4 @@ public extension Collection {
     var isNotEmpty: Bool {
         return !isEmpty
     }
-    
-    var hasContent: Bool {
-        return !isEmpty
-    }
 }
