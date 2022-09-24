@@ -1,6 +1,6 @@
 # SwiftSugar
 
-Useful extension and utils for Swift development
+Useful extensions and utils for Swift development
 
 
 # Bool
