@@ -15,7 +15,7 @@ public extension CustomStringConvertible {
 }
 
 public extension CustomDebugStringConvertible {
-    func printed() {
-        print(self)
+    func debugPrinted() {
+        debugPrint(self)
     }
 }
