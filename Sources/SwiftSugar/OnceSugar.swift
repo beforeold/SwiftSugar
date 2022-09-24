@@ -1,5 +1,5 @@
 //
-//  OnceFlag.swift
+//  OnceSugar.swift
 //  
 //
 //  Created by beforeold on 2022/9/23.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// a type to ensure task run only once
-public class OnceFlag {
+public class OnceSugar {
     /// whether done
     private var isDone = false
     
@@ -25,25 +25,25 @@ public class OnceFlag {
     /// - Parameter task: the task will be called if not done
     /// - Returns: whether the task is excecuted this time
     @discardableResult
-    public func onceOnly(_ task: () -> Void) -> Bool {
+    public func onceOnly(_ task: () throws -> Void) rethrows -> Bool {
         if let queue = queue {
             var ret = false
-            queue.sync {
-                ret = handleTask(task)
+            try queue.sync {
+                ret = try handleTask(task)
             }
             return ret
         }
         
-        return handleTask(task)
+        return try handleTask(task)
     }
     
     /// handle the actual task
-    private func handleTask(_ task: () -> Void) -> Bool {
+    private func handleTask(_ task: () throws -> Void) rethrows -> Bool {
         if isDone {
             return false
         }
         
-        task()
+        try task()
         isDone = true
         return true
     }
