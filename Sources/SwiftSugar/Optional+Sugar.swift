@@ -23,3 +23,9 @@ public extension Optional {
         return self != nil
     }
 }
+
+extension Optional where Wrapped: CustomStringConvertible {
+    public func toString() -> String {
+        self?.description ?? "nil"
+    }
+}
