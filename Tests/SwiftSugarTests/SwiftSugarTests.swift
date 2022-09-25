@@ -38,4 +38,28 @@ final class SwiftSugarTests: XCTestCase {
             XCTAssertFalse(o1.isNotNil)
         }
     }
+    
+    enum Some {
+        case one
+    }
+    
+    func testPrintSugar() {
+        let dict: [String: Any] = [
+            "ok0": "😄",
+            "ok1": 5, "ok2": 3.0,
+            "ok3": Some.one,
+            "ok4": "中文",
+            "ok5": [1, 2, 3, 4.0, [1: 2]]
+        ]
+        printSugar(dict)
+        
+        let array: [Any] = [
+            1,
+            2,
+            "3 😄",
+            4.0,
+            [5: 6, 7: [8, 9, "嘿嘿"]]
+        ]
+        printSugar(array)
+    }
 }

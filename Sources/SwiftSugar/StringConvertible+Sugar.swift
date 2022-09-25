@@ -10,12 +10,12 @@ import Foundation
 
 public extension CustomStringConvertible {
     func printed() {
-        print(self)
+        Swift.print(self)
     }
 }
 
 public extension CustomDebugStringConvertible {
     func debugPrinted() {
-        debugPrint(self)
+        Swift.debugPrint(self)
     }
 }
