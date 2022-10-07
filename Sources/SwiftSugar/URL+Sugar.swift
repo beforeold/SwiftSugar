@@ -19,7 +19,8 @@ extension Sugar where Base == URL {
     /// The home directory for the current user (~/).
     /// Complexity: O(1)
     public static var homeDirectory: URL {
-        return FileManager.default.homeDirectoryForCurrentUser
+        return URL(string: NSHomeDirectory())!
+        // return FileManager.default.homeDirectoryForCurrentUser
     }
     
     /// The temporary directory for the current user.
@@ -33,14 +34,14 @@ extension Sugar where Base == URL {
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var cachesDirectory: URL {
-        return try! getUrl(for: .cachesDirectory)
+        return getUserUrl(for: .cachesDirectory)
     }
     
     /// Supported applications (/Applications).
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var applicationDirectory: URL {
-        return try! getUrl(for: .applicationDirectory)
+        return getUserUrl(for: .applicationDirectory)
     }
     
     /// Various user-visible documentation, support, and configuration
@@ -48,28 +49,28 @@ extension Sugar where Base == URL {
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var libraryDirectory: URL {
-        return try! getUrl(for: .libraryDirectory)
+        return getUserUrl(for: .libraryDirectory)
     }
     
     /// User home directories (/Users).
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var userDirectory: URL {
-        return try! getUrl(for: .userDirectory)
+        return getUserUrl(for: .userDirectory)
     }
     
     /// Documents directory for the current user (~/Documents)
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var documentsDirectory: URL {
-        return try! getUrl(for: .documentDirectory)
+        return getUserUrl(for: .documentDirectory)
     }
     
     /// Desktop directory for the current user (~/Desktop)
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var desktopDirectory: URL {
-        return try! getUrl(for: .desktopDirectory)
+        return getUserUrl(for: .desktopDirectory)
     }
     
     /// Application support files for the current
@@ -77,42 +78,42 @@ extension Sugar where Base == URL {
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var applicationSupportDirectory: URL {
-        return try! getUrl(for: .applicationSupportDirectory)
+        return getUserUrl(for: .applicationSupportDirectory)
     }
     
     /// Downloads directory for the current user (~/Downloads)
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var downloadsDirectory: URL {
-        return try! getUrl(for: .downloadsDirectory)
+        return getUserUrl(for: .downloadsDirectory)
     }
     
     /// Movies directory for the current user (~/Movies)
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var moviesDirectory: URL {
-        return try! getUrl(for: .moviesDirectory)
+        return getUserUrl(for: .moviesDirectory)
     }
     
     /// Music directory for the current user (~/Music)
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var musicDirectory: URL {
-        return try! getUrl(for: .musicDirectory)
+        return getUserUrl(for: .musicDirectory)
     }
     
     /// Pictures directory for the current user (~/Pictures)
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var picturesDirectory: URL {
-        return try! getUrl(for: .picturesDirectory)
+        return getUserUrl(for: .picturesDirectory)
     }
     
     /// The user’s Public sharing directory (~/Public)
     /// Complexity: O(n) where n is the number of significant directories
     /// specified by `FileManager.SearchPathDirectory`
     public static var sharedPublicDirectory: URL {
-        return try! getUrl(for: .sharedPublicDirectory)
+        return getUserUrl(for: .sharedPublicDirectory)
     }
     
     /// Trash directory for the current user (~/.Trash)
@@ -121,12 +122,16 @@ extension Sugar where Base == URL {
     @available(tvOS, unavailable)
     @available(watchOS, unavailable)
     public static var trashDirectory: URL {
-        return try! getUrl(for: .trashDirectory)
+        return getUserUrl(for: .trashDirectory)
     }
     
     /// Returns the home directory for the specified user.
     public static func homeDirectory(forUser user: String) -> URL? {
-        return FileManager.default.homeDirectory(forUser: user)
+        guard let path = NSHomeDirectoryForUser(user) else {
+            return nil
+        }
+        return URL(string: path)
+        // return FileManager.default.homeDirectory(forUser: user)
     }
     
     /// -URLForDirectory:inDomain:appropriateForURL:create:error: is a URL-based replacement for FSFindFolder(). It allows for the specification and (optional) creation of a specific directory for a particular purpose (e.g. the replacement of a particular item on disk, or a particular Library directory.
@@ -140,5 +145,11 @@ extension Sugar where Base == URL {
         } catch {
             throw error
         }
+    }
+    
+    /// -URLsForDirectory:inDomains: is analogous to NSSearchPathForDirectoriesInDomains(), but returns an array of NSURL instances for use with URL-taking APIs. This API is suitable when you need to search for a file or files which may live in one of a variety of locations in the domains specified.
+    private static func getUserUrl(for directory: FileManager.SearchPathDirectory,
+                                   in domain: FileManager.SearchPathDomainMask = .userDomainMask) -> URL {
+        return FileManager.default.urls(for: directory, in: domain)[0]
     }
 }
