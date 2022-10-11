@@ -62,4 +62,8 @@ final class SwiftSugarTests: XCTestCase {
         ]
         printSugar(array)
     }
+    
+    func testString() {
+        XCTAssertEqual("123".sugar.characters, ["1", "2", "3"])
+    }
 }

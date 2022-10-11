@@ -18,5 +18,5 @@ public func printSugar(_ dictionary: [AnyHashable: Any]) {
 
 private func printSugar(_ object: AnyObject) {
     let desc = object.description ?? "null"
-    print(desc.unicodeReplaced())
+    print(desc.sugar.unicodeReplaced())
 }
