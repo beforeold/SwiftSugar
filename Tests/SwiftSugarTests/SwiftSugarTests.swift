@@ -66,4 +66,30 @@ final class SwiftSugarTests: XCTestCase {
   func testString() {
     XCTAssertEqual("123".sugar.characters, ["1", "2", "3"])
   }
+  
+  func testOptionalCollection() {
+    do {
+      var array: [Int]?
+      array.append(5)
+      XCTAssertEqual(array, [5])
+    }
+    
+    do {
+      var array: [Int]? = [1]
+      array.append(5)
+      XCTAssertEqual(array, [1, 5])
+    }
+    
+    do {
+      var array: [Int]?
+      array.append(contentsOf: [2, 3])
+      XCTAssertEqual(array, [2, 3])
+    }
+    
+    do {
+      var array: [Int]? = [1]
+      array.append(contentsOf: [2, 3])
+      XCTAssertEqual(array, [1, 2, 3])
+    }
+  }
 }
