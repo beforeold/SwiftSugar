@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  String+Sugar.swift
 //  
 //
 //  Created by beforeold on 2022/9/25.
@@ -35,5 +35,12 @@ extension Sugar where Base == String {
 extension Sugar where Base == String {
     public var characters: [Character] {
         return base.map { $0 }
+    }
+    
+    public var utf8Data: Data {
+        // it's always safe to unwap when using utf8
+        // refer to: https://www.objc.io/blog/2018/02/13/string-to-data-and-back/
+        // return Data(base.utf8)
+        return base.data(using: .utf8)!
     }
 }
