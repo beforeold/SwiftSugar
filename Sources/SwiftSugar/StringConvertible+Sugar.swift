@@ -9,13 +9,13 @@ import Foundation
 
 
 public extension CustomStringConvertible {
-    func printed() {
-        Swift.print(self)
-    }
+  func printed() {
+    Swift.print(self)
+  }
 }
 
 public extension CustomDebugStringConvertible {
-    func debugPrinted() {
-        Swift.debugPrint(self)
-    }
+  func debugPrinted() {
+    Swift.debugPrint(self)
+  }
 }
