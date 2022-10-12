@@ -37,7 +37,7 @@ extension Sugar where Base == String {
     return base.map { $0 }
   }
   
-  public var utf8Data: Data {
+  public var UTF8Data: Data {
     // it's always safe to unwap when using utf8
     // refer to: https://www.objc.io/blog/2018/02/13/string-to-data-and-back/
     // return Data(base.utf8)
