@@ -51,7 +51,7 @@ final class SwiftSugarTests: XCTestCase {
             "ok4": "中文",
             "ok5": [1, 2, 3, 4.0, [1: 2]]
         ]
-        printSugar(dict)
+        sugarPrintJSON(dict)
         
         let array: [Any] = [
             1,
@@ -60,7 +60,7 @@ final class SwiftSugarTests: XCTestCase {
             4.0,
             [5: 6, 7: [8, 9, "嘿嘿"]]
         ]
-        printSugar(array)
+        sugarPrintJSON(array)
     }
     
     func testString() {
