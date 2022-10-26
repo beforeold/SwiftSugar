@@ -39,6 +39,42 @@ final class SwiftSugarTests: XCTestCase {
     }
   }
   
+  func testOptionalLetVar() {
+    do {
+      let o1: Double? = 9
+      var ret = 0.0
+      o1.let { value in
+        ret = value
+      }
+      XCTAssertEqual(ret, 9)
+    }
+    
+    do {
+      let o1: Double? = nil
+      var ret = 0.0
+      o1.let { value in
+        ret = value
+      }
+      XCTAssertEqual(ret, 0)
+    }
+
+    do {
+      var o1: Double? = 9
+      o1.var { value in
+        value += 9
+      }
+      XCTAssertEqual(o1, 18)
+    }
+    
+    do {
+      var o1: Double? = nil
+      o1.var { value in
+        value += 9
+      }
+      XCTAssertEqual(o1, nil)
+    }
+  }
+  
   enum Some {
     case one
   }

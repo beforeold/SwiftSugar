@@ -29,3 +29,17 @@ extension Optional where Wrapped: CustomStringConvertible {
     self?.description ?? "nil"
   }
 }
+
+public extension Optional {
+  @inlinable func `let`(execute: (Wrapped) throws -> Void) rethrows {
+    if let self = self {
+      try execute(self)
+    }
+  }
+  
+  @inlinable mutating func `var`(excecute: (inout Wrapped) throws -> Void) rethrows {
+    if self != nil {
+      try excecute(&(self!))
+    }
+  }
+}
