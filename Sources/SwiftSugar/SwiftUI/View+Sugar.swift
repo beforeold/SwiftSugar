@@ -1,5 +1,5 @@
 //
-//  SwiftUI_View+Sugar.swift
+//  View+Sugar.swift
 //  
 //
 //  Created by beforeold on 2022/10/28.
