@@ -34,3 +34,19 @@ extension Collection where Element: Collection {
     }
   }
 }
+
+extension Collection {
+  @inlinable public func ignoreMap<T>(_ transform: () throws -> T) rethrows -> [T] {
+    try map { _ in
+      try transform()
+    }
+  }
+}
+
+extension Array {
+  @inlinable public init(repeating: () -> Element, count: Int) {
+    self = (0..<count).map { _ in
+      repeating()
+    }
+  }
+}
