@@ -26,3 +26,11 @@ public extension Optional where Wrapped: RangeReplaceableCollection {
     self = collection
   }
 }
+
+extension Collection where Element: Collection {
+  @inlinable public func map2d<T>(_ transform: (Self.Element.Element) throws -> T) rethrows -> [[T]] {
+    try map { list in
+      try list.map(transform)
+    }
+  }
+}
