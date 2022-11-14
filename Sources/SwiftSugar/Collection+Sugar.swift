@@ -44,7 +44,7 @@ extension Collection {
 }
 
 extension Array {
-  @inlinable public init(repeating: () -> Element, count: Int) {
+  @inlinable public init(count: Int, repeating: () -> Element) {
     self = (0..<count).map { _ in
       repeating()
     }
