@@ -8,10 +8,12 @@
 import Foundation
 
 /// a callback wrapper which handle lifecycle by itself
-open class CallbackSugar<Value> {
+open class CallbackSugar<Value>: NSObject {
   private var internalCallback: (Value) -> Void = { _ in }
   
   public init(callback: @escaping (Value) -> Void) {
+    super.init()
+    
     let inputCallback = callback
     
     self.internalCallback = { value in
