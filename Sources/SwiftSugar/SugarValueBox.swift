@@ -8,7 +8,7 @@
 import Foundation
 
 /// a reference type box for a value, like Optional Enum,
-final class SugarValueBox<Value> {
+final public class SugarValueBox<Value> {
   public var value: Value?
   
   public init(value: Value? = nil) {

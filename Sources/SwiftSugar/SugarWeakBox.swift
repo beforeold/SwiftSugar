@@ -8,7 +8,7 @@
 import Foundation
 
 /// a reference type box for a value, like Optional Enum,
-final class SugarWeakBox<Value: AnyObject> {
+final public class SugarWeakBox<Value: AnyObject> {
   public weak var value: Value?
   
   public init(value: Value? = nil) {
