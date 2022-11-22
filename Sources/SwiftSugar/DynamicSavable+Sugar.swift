@@ -7,9 +7,7 @@
 
 import Foundation
 
-public protocol DynamicSavable: AnyObject {
-  
-}
+public protocol DynamicSavable: AnyObject { }
 
 private var private_map_key: String? = nil
 
@@ -32,12 +30,12 @@ extension Sugar where Base: DynamicSavable {
   }
   
   public func set<T: AnyObject>(weakValue: T, forKey key: String) {
-    base.map[key] = SugarAnoymousWeakBox(weakValue)
+    base.map[key] = AnyWeakSugar(weakValue)
   }
   
   public func getValue<T>(forKey key: String) -> T? {
     let value = base.map[key]
-    if let weakBox = value as? SugarAnoymousWeakBox {
+    if let weakBox = value as? AnyWeakSugar {
       return weakBox.value as? T
     }
     

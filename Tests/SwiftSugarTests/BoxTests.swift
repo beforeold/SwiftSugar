@@ -30,13 +30,13 @@ final class BoxTests: XCTestCase {
     XCTAssertTrue(newObj === obj.sugar.getValue(forKey: "newObjKey"))
     
     do {
-      let weakBox = SugarWeakBox(Object())
+      let weakBox = WeakSugar(Object())
       XCTAssertEqual(weakBox.value, nil)
       XCTAssertTrue(weakBox.value === nil)
     }
     
     do {
-      let weakBox = SugarAnoymousWeakBox(Object())
+      let weakBox = AnyWeakSugar(Object())
       XCTAssertTrue(weakBox.value === nil)
     }
   }
@@ -57,13 +57,13 @@ final class BoxTests: XCTestCase {
     XCTAssertTrue(newObj === obj.sugar.getValue(forKey: "newObjKey"))
     
     do {
-      let weakBox = SugarWeakBox(Object())
+      let weakBox = WeakSugar(Object())
       XCTAssertEqual(weakBox.value, nil)
       XCTAssertTrue(weakBox.value === nil)
     }
     
     do {
-      let weakBox = SugarAnoymousWeakBox(Object())
+      let weakBox = AnyWeakSugar(Object())
       XCTAssertTrue(weakBox.value === nil)
     }
   }
