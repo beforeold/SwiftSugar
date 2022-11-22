@@ -11,7 +11,7 @@ import Foundation
 final public class SugarValueBox<Value> {
   public var value: Value?
   
-  public init(value: Value? = nil) {
+  public init(_ value: Value? = nil) {
     self.value = value
   }
 }

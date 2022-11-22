@@ -11,7 +11,15 @@ import Foundation
 final public class SugarWeakBox<Value: AnyObject> {
   public weak var value: Value?
   
-  public init(value: Value? = nil) {
+  public init(_ value: Value? = nil) {
+    self.value = value
+  }
+}
+
+final public class SugarAnoymousWeakBox {
+  public weak var value: AnyObject?
+  
+  public init<Value: AnyObject>(_ value: Value? = nil) {
     self.value = value
   }
 }
