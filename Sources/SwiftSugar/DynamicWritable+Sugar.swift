@@ -1,5 +1,5 @@
 //
-//  NSObject+Sugar.swift
+//  DynamicWritable+Sugar.swift
 //  
 //
 //  Created by beforeold on 2022/11/22.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-public protocol DynamicSavable: AnyObject { }
+public protocol DynamicWritable: AnyObject { }
 
 private var private_map_key: String? = nil
 
-extension DynamicSavable {
+extension DynamicWritable {
   fileprivate var map: [String: Any] {
     get {
       let map = objc_getAssociatedObject(self, &private_map_key) as? [String: Any]
@@ -24,7 +24,7 @@ extension DynamicSavable {
   }
 }
 
-extension Sugar where Base: DynamicSavable {
+extension Sugar where Base: DynamicWritable {
   public func set<T>(value: T?, forKey key: String) {
     base.map[key] = value
   }
@@ -44,4 +44,4 @@ extension Sugar where Base: DynamicSavable {
 }
 
 
-extension NSObject: DynamicSavable { }
+extension NSObject: DynamicWritable { }

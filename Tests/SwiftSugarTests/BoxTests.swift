@@ -41,7 +41,7 @@ final class BoxTests: XCTestCase {
     }
   }
   
-  class Object: SugarCompatible, DynamicSavable, Equatable {
+  class Object: SugarCompatible, DynamicWritable, Equatable {
     static func == (lhs: Object, rhs: Object) -> Bool {
       return lhs === rhs
     }
