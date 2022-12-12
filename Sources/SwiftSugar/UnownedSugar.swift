@@ -8,7 +8,7 @@
 import Foundation
 
 /// can be used as object on publisher.assignTo:on:
-public class UnownedSugar<T: AnyObject> {
+final public class UnownedSugar<T: AnyObject> {
   public unowned var value: T
   
   public init(_ value: T) {
