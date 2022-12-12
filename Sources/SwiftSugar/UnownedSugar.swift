@@ -9,9 +9,9 @@ import Foundation
 
 /// can be used as object on publisher.assignTo:on:
 public class UnownedSugar<T: AnyObject> {
-  unowned var value: T
+  public unowned var value: T
   
-  init(_ value: T) {
+  public init(_ value: T) {
     self.value = value
   }
 }
