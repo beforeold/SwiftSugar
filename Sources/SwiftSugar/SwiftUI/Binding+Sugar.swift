@@ -13,8 +13,11 @@ extension Binding {
     return .init {
       self.wrappedValue != nil
     } set: { newValue in
+      /*
       precondition(newValue == false)
       self.wrappedValue = nil
+      */
+      // ignore set closure
     }
   }
 }
