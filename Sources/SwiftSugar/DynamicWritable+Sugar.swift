@@ -30,12 +30,12 @@ extension Sugar where Base: DynamicWritable {
   }
   
   public func set<T: AnyObject>(weakValue: T, forKey key: String) {
-    base.map[key] = AnyWeakSugar(weakValue)
+    base.map[key] = AnyWeakBox(weakValue)
   }
   
   public func getValue<T>(forKey key: String) -> T? {
     let value = base.map[key]
-    if let weakBox = value as? AnyWeakSugar {
+    if let weakBox = value as? AnyWeakBox {
       return weakBox.value as? T
     }
     
