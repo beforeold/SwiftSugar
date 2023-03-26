@@ -27,6 +27,6 @@ public func assertNil<T>(value: T?) {
   assert(value == nil)
 }
 
-public func assertUnexpectedError(error: Error) {
+public func assertUnexpectedError(_ error: Error) {
   assert(false, "unexected error: \(error)")
 }
