@@ -8,22 +8,6 @@
 import Foundation
 
 public extension Bool {
-  @discardableResult
-  func assertTrue() -> Bool {
-    assert(self == true)
-    
-    return true
-  }
-  
-  @discardableResult
-  func assertFalse() -> Bool {
-    assert(self == false)
-    
-    return true
-  }
-}
-
-public extension Bool {
   func ifTrue(_ success: () throws -> Void) rethrows {
     if self {
       try success()
