@@ -9,7 +9,7 @@ import Foundation
 
 public protocol DynamicWritable: AnyObject { }
 
-private var private_map_key: String? = nil
+private var private_map_key: Void? = nil
 
 extension DynamicWritable {
   fileprivate var map: [String: Any] {
